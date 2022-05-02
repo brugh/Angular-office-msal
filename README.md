@@ -1,3 +1,6 @@
+# Sample: 
+https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/2-Authorization-I/1-call-graph/SPA/src 
+
 # FsFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
@@ -25,3 +28,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Run ssl proxy with self-signed trusted certificate
+You can use it to host any domain, just change localhost to anything you like, wildcards are also supported.
+
+# CERTS
+
+Install mkcert (choco install mkcert / brew install mkcert)
+Run mkcert -install
+Run mkcert localhost
+Run
+local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 9001 --target 9000
+You're all set! Just go to https://localhost:9001 and see your project working!

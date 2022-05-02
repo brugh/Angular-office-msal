@@ -1,0 +1,19 @@
+.nav-class {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .5rem;
+  box-shadow: 0 3px 5px 0px #3337;
+  height: 64px;
+  width: 100%;
+  padding-inline: 1rem;
+  margin-bottom: .5rem;
+}
+
+.fill {
+  flex-grow: 1;
+}
+
+.menu {
+  font-size: 1.5rem;
+}

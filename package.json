@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve --port 4201\" \"local-ssl-proxy --source 4200 --target 4201\" ",
+    "start": "concurrently \"ng serve --port 4201\" \"local-ssl-proxy local-ssl-proxy --key cert.key --cert cert.crt --source 4200 --target 4201\" ",
     "start2": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mkcert": "mkcert create-ca --organization localhost --validity 2000 && mkcert create-cert localhost"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,10 @@
     "@angular/router": "~13.3.0",
     "@azure/msal-angular": "^2.2.0",
     "@azure/msal-browser": "^2.23.0",
+    "@fluentui/web-components": "^2.3.1",
+    "@microsoft/microsoft-graph-client": "^3.0.2",
+    "@ngrx/effects": "^13.2.0",
+    "@ngrx/store": "^13.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

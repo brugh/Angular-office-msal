@@ -1,0 +1,4 @@
+<fluent-button appearance="{{appearance}}" (click)="select.emit()">
+  <i *ngIf="icon" slot="start" class="ms-Icon ms-Icon--{{icon}}" aria-hidden="true"></i>
+  <span class="label">{{label}}<ng-content></ng-content></span>
+</fluent-button>

@@ -1,2 +1,13 @@
-<header>NAV</header>
-<router-outlet></router-outlet>
+<div class="mainscreen">
+  <app-navbar [loggedIn]="loggedIn$|async" (login)="auth.login()" (logout)="auth.logout()"></app-navbar>
+  <div class="container">
+    <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+    <!-- <router-outlet *ngIf="!isIframe"></router-outlet> -->
+    <router-outlet></router-outlet>
+  </div>
+  <footer class="footer-text">
+    How did we do? <a
+      href="https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR73pcsbpbxNJuZCMKN0lURpUOU5PNlM4MzRRV0lETkk2ODBPT0NBTEY5MCQlQCN0PWcu"
+      target="_blank"> Share your experience with us!</a>
+  </footer>
+</div>

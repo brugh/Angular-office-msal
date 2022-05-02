@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div *ngIf="!(loggedIn$ | async); else LoggedIn">
+  <h2>Angular single-page application built with MSAL Angular</h2>
+  <h3>Sign-in with Azure AD and call Microsoft Graph</h3>
+  <p>This sample demonstrates how to configure MSAL Angular to sign-in, sign-out and acquire an access token for the Microsoft Graph API</p>
+</div>
+<ng-template #LoggedIn>
+  <table>
+    <tr *ngFor="let i of datasource$|async">
+      <td>{{i.claim}}</td>
+      <td>{{i.value}}</td>
+    </tr>
+  </table>
+</ng-template>
+
+<app-button (click)="insert()">Hello world!</app-button>
