@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { StoreState } from '../store/store.state';
+import { StoreState } from '../../store/store.state';
 import { Store } from '@ngrx/store';
 
 declare const Word: any;

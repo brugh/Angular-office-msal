@@ -4,7 +4,7 @@ import { AuthenticationResult, EventMessage, EventType, InteractionStatus } from
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AuthService, CanActivateGuard } from './services/auth.service';
+import { AuthService } from './services/auth.service';
 import { setLoggedIn, setClaims } from './store/store.actions';
 import { StoreState } from './store/store.state';
 

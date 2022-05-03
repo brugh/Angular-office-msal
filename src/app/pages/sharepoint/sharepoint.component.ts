@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SharepointService } from '../services/sharepoint.service';
+import { SharepointService } from '../../services/sharepoint.service';
 
 @Component({
   selector: 'app-sharepoint',

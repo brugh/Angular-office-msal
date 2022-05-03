@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getClaims, getPhoto } from '../store/store.actions';
-import { StoreState } from '../store/store.state';
+import { getClaims, getPhoto } from '../../store/store.actions';
+import { StoreState } from '../../store/store.state';
 
 type ProfileType = {
   givenName?: string,
