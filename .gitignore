@@ -9,7 +9,11 @@
 # Node
 /node_modules
 npm-debug.log
+*.key
+*.crt
 yarn-error.log
+.vscode
+.angular
 
 # IDEs and editors
 .idea/

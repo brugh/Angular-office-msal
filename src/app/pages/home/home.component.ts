@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { StoreState } from '../../store/store.state';
 import { Store } from '@ngrx/store';
+import { getClaims, getPhoto } from 'src/app/store/store.actions';
 
+declare const Office: any;
 declare const Word: any;
 
 @Component({
@@ -18,6 +20,10 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store<{ store: StoreState }>) { }
 
   ngOnInit(): void {
+    // this.loggedIn$.subscribe((l) => {
+    //   if (!l && Office.context.ui.messageParent) Office.context.ui.messageParent(JSON.stringify({ status: 'failed' }));
+    // });
+    this.store.dispatch(getClaims());
   }
 
   insert() {

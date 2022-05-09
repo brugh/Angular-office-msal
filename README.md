@@ -1,42 +1,45 @@
-# Sample: 
-https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/2-Authorization-I/1-call-graph/SPA/src 
+# Getting started
 
-# FsFrontend
+run ```npm install```
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+## Azure: 
 
-## Development server
+Go to [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps] and register new Application. 
+Go to Authorization and add a platform: Single-Page application 
+Enter 'https://localhost:4200' as Redirect URI. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Check that User.Read is in the default API permissions as DELEGATED permissions. 
 
-## Code scaffolding
+## Environment
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+create a /src/environments/environment.ts file with: 
 
-## Build
+```javascript
+export const environment = {
+  production: false,
+  clientId: <your Application (client) ID>
+  authority: 'https://login.microsoftonline.com/common/',
+  redirectUri: window.location.origin,
+  scopes: ['User.Read']
+};
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Manifest
 
-## Running unit tests
+run ```npm run uuid``` 
+Edit manifest.xml file and add UUID. 
+At the bottom, add the Azure Application Client ID
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Certificates
 
-## Running end-to-end tests
+Run 'npm run mkcert' 
+Import (install) CA.crt and CERT.crt into your certificate store
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Office
 
-## Further help
+Copy manifest.xml to 'C:\programdata\MyAddin' (or other preferred directory). 
+Inside an Office program, go to 'File', 'Options', 'Trust Center', 'Trust Center Settings', Select 'Trusted Add-in Catalogs'. Enter Catalog Url: ```\\localhost\\c$\\programdata\\MyAddin```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Restart Office program, then go to 'Insert' tab and select 'My Add-ins'. Go to Shared Folder and select your Add-in. Open Addin from Home tab. 
 
-Run ssl proxy with self-signed trusted certificate
-You can use it to host any domain, just change localhost to anything you like, wildcards are also supported.
-
-# CERTS
-
-Install mkcert (choco install mkcert / brew install mkcert)
-Run mkcert -install
-Run mkcert localhost
-Run
-local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 9001 --target 9000
-You're all set! Just go to https://localhost:9001 and see your project working!
+If your add-in is missing, check the manifest file with 'npm run validate'. 

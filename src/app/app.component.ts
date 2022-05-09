@@ -16,7 +16,6 @@ declare const Office: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  isIframe = false;
   private readonly _destroying$ = new Subject<void>();
   private readonly _destroying2$ = new Subject<void>();
   loggedIn$ = this.store.select(s => s.store.loggedIn);
@@ -37,7 +36,6 @@ export class AppComponent implements OnInit, OnDestroy {
         takeUntil(this._destroying$)
       )
       .subscribe((ev) => {
-        console.log('Progress', ev);
         this.setLoginDisplay();
         this.checkAndSetActiveAccount();
         this.getClaims(this.authService.instance.getActiveAccount()?.idTokenClaims)
@@ -49,7 +47,6 @@ export class AppComponent implements OnInit, OnDestroy {
         takeUntil(this._destroying2$)
       )
       .subscribe((ev: EventMessage) => {
-        console.log('Subject', ev);
         const payload = ev.payload as AuthenticationResult;
         this.authService.instance.setActiveAccount(payload?.account);
       });
@@ -83,9 +80,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   setLoginDisplay() {
-    // this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
     const _L = this.authService.instance.getAllAccounts().length > 0;
-    this.store.dispatch(setLoggedIn({ loggedIn: _L }))
+    if (_L) this.store.dispatch(setLoggedIn({ loggedIn: _L }))
   }
 
   // unsubscribe to events when component is destroyed

@@ -5,6 +5,7 @@ import { CanActivateGuard } from './services/auth.service';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { BrowserUtils } from '@azure/msal-browser';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard, MsalGuard] },
@@ -29,7 +30,7 @@ const isIframe = window !== window.parent && !window.opener;
   imports: [RouterModule.forRoot(routes, { 
     useHash: true, 
     enableTracing: false,
-    initialNavigation: 'enabled' // !isIframe ? 'enabled' : 'disabled'
+    initialNavigation: !BrowserUtils.isInIframe() && !BrowserUtils.isInPopup() ? 'enabled' : 'disabled' // Remove this line to use Angular Universal
   })],
   exports: [RouterModule]
 })

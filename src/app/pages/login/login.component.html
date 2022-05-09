@@ -1,2 +1,4 @@
-
-<app-button (click)="home()">Close</app-button>
+<app-button *ngIf="!(loggedIn$|async); else loggedIn" (click)="login()">Close</app-button>
+<ng-template #loggedIn>
+  <app-button (click)="home()">Close</app-button>
+</ng-template>
