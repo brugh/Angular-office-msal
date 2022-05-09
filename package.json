@@ -9,6 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "uuid": "node uuid.js",
+    "validate": "npx office-addin-validator manifest-localhost.xml",
     "mkcert": "mkcert create-ca --organization localhost --validity 2000 && mkcert create-cert localhost"
   },
   "private": true,
