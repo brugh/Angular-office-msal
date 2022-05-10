@@ -81,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   setLoginDisplay() {
     const _L = this.authService.instance.getAllAccounts().length > 0;
-    if (_L) this.store.dispatch(setLoggedIn({ loggedIn: _L }))
+    this.store.dispatch(setLoggedIn({ loggedIn: _L }))
   }
 
   // unsubscribe to events when component is destroyed

@@ -5,11 +5,8 @@ import { initialState, StoreState } from './store.state';
 export const storeReducer = createReducer<StoreState>(
   initialState,
   on(storeReset, () => { return { ...initialState }; }),
-  on(setLoggedIn, (state: StoreState, action): StoreState => { 
-    console.log("Reducing ", state, action.loggedIn);
-    return { ...state, loggedIn: action.loggedIn }; 
-  }),
-  on(storeToken, (state, action) => { return { ...state, token: action.token }; }),
-  on(setClaims, (state, action) => { return { ...state, claims: action.claims }; }),
-  on(setPhoto, (state, action) => { console.log(action.photo); return { ...state, photo: action.photo }; })
+  on(setLoggedIn, (state: StoreState, { loggedIn }): StoreState => { return { ...state, loggedIn: loggedIn }; }),
+  on(setClaims, (state: StoreState, { claims }): StoreState => { return { ...state, claims: claims }; }),
+  on(setPhoto, (state: StoreState, { photo }): StoreState => { return { ...state, photo: photo }; }),
+  on(storeToken, (state: StoreState, { token }): StoreState => { return { ...state, token: token }; }),
 );

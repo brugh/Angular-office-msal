@@ -10,16 +10,10 @@ import { BrowserUtils } from '@azure/msal-browser';
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard, MsalGuard] },
   { path: 'login', component: LoginComponent, canActivate: [MsalGuard]},
-  { // Needed for hash routing
-    path: 'error', component: HomeComponent
-  },
-  { // Needed for hash routing
-    path: 'state', component: HomeComponent
-  },
-  { // Needed for hash routing
-    path: 'code', component: HomeComponent
-  },
-  { path: 'auth', component: MsalRedirectComponent },
+  { path: 'error', component: HomeComponent }, // Needed for hash routing
+  { path: 'state', component: HomeComponent }, // Needed for hash routing
+  { path: 'code', component: HomeComponent },  // Needed for hash routing
+  { path: 'auth', component: MsalRedirectComponent }, 
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

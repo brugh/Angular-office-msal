@@ -19,6 +19,8 @@ import { storeReducer } from './store/store.reducers';
 import { LoginComponent } from './pages/login/login.component';
 import { StoreEffects } from './store/store.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 provideFluentDesignSystem().register(allComponents);
 
@@ -38,7 +40,13 @@ provideFluentDesignSystem().register(allComponents);
     AppRoutingModule,
     MsalModule,
     StoreModule.forRoot({ store: storeReducer }, {}),
-    EffectsModule.forRoot([StoreEffects])
+    EffectsModule.forRoot([StoreEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
