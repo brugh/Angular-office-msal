@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { InitialNavigation, RouterModule, Routes } from '@angular/router';
 import { MsalGuard, MsalRedirectComponent } from '@azure/msal-angular';
 import { CanActivateGuard } from './services/auth.service';
 import { HomeComponent } from './pages/home/home.component';
@@ -13,18 +13,19 @@ const routes: Routes = [
   { path: 'error', component: HomeComponent }, // Needed for hash routing
   { path: 'state', component: HomeComponent }, // Needed for hash routing
   { path: 'code', component: HomeComponent },  // Needed for hash routing
-  { path: 'auth', component: MsalRedirectComponent }, 
+  { path: 'auth', component: MsalRedirectComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
+const special = !BrowserUtils.isInIframe() && !BrowserUtils.isInPopup();
 const isIframe = window !== window.parent && !window.opener;
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { 
-    useHash: true, 
+  imports: [RouterModule.forRoot(routes, {
+    useHash: true,
     enableTracing: false,
-    initialNavigation: !BrowserUtils.isInIframe() && !BrowserUtils.isInPopup() ? 'enabled' : 'disabled' // Remove this line to use Angular Universal
+    initialNavigation: special?'enabledBlocking':'disabled' // Remove this line to use Angular Universal
   })],
   exports: [RouterModule]
 })

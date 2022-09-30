@@ -1,9 +1,9 @@
 <nav class="nav-class">
-  <fluent-anchor class="menu" appearance="stealth" [routerLink]="['home']">
+  <fluent-anchor class="menu" appearance="stealth" [routerLink]="['']">
     <i class="ms-Icon ms-Icon--GlobalNavButton"></i>
   </fluent-anchor>
   <span class="fill"></span>
-  <fluent-anchor *ngIf="loggedIn" [routerLink]="['profile']">Profile</fluent-anchor>
+  <fluent-anchor *ngIf="loggedIn" [routerLink]="['/profile']">Profile</fluent-anchor>
   <app-button *ngIf="!loggedIn" appearance="accent" label="Login" (click)="login.emit()"></app-button>
   <app-button *ngIf="loggedIn" appearance="accent" label="Logout" (click)="logout.emit()"></app-button>
 </nav>

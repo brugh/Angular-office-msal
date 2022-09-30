@@ -115,15 +115,15 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
 }
 
 /**
- * Configuration object to be passed to MSAL instance on creation. 
+ * Configuration object to be passed to MSAL instance on creation.
  * For a full list of MSAL.js configuration parameters, visit:
- * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
+ * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md
  */
 export const msalConfig: Configuration = {
   auth: {
     clientId: environment.clientId, // This is the ONLY mandatory field that you need to supply.
     authority: 'https://login.microsoftonline.com/common', // Defaults to "https://login.microsoftonline.com/common"
-    redirectUri: window.location.origin, // Points to window.location.origin. You must register this URI on Azure portal/App Registration.
+    redirectUri: 'https://localhost:4200/', // Points to window.location.origin. You must register this URI on Azure portal/App Registration.
   },
   cache: {
     cacheLocation: BrowserCacheLocation.LocalStorage, // Configures cache location. "sessionStorage" is more secure, but "localStorage" gives you SSO between tabs.
@@ -158,7 +158,7 @@ export const protectedResources = {
 /**
  * Scopes you add here will be prompted for user consent during sign-in.
  * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.
- * For more information about OIDC scopes, visit: 
+ * For more information about OIDC scopes, visit:
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 export const loginRequest = {

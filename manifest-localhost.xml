@@ -7,7 +7,7 @@
   <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
 
   <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
-  <Id> -------------- Enter a UUID here ---------------</Id>
+  <Id>9b7fc638-3e7c-4205-92ae-0d21a361e4d9</Id>
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.1</Version>
@@ -282,8 +282,8 @@
     </Resources>
     <ExtendedOverrides Url="https://localhost:4200/assets/overrides.json"></ExtendedOverrides>
     <WebApplicationInfo>
-      <Id>----------- Your Azure App Client ID -----------</Id>
-      <Resource>api://localhost:4200/----------- Your Azure App Client ID -----------</Resource>
+      <Id>11798b3b-d3cf-4ee4-bd38-0133911bf9e8</Id>
+      <Resource>api://localhost:4200/11798b3b-d3cf-4ee4-bd38-0133911bf9e8</Resource>
       <Scopes>
         <Scope>user.read</Scope>
         <Scope>profile</Scope>
